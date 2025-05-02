@@ -11,7 +11,7 @@ const MenuBar = ({ isOpen, toggleMenu, closeMenu }) => {
       </div>
 
       <div className="logo" onClick={closeMenu}>
-        <Link href="/">Stefan Markovic</Link>
+        <Link href="/">Nora</Link>
       </div>
 
       <div className="portfolio-year">
