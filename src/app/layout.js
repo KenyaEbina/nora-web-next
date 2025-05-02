@@ -4,8 +4,8 @@ import "./globals.css";
 import Menu from "./components/Menu/Menu";
 
 export const metadata = {
-  title: "Stefan Markovic | Codegrid",
-  description: "CGMWT September by Codegrid",
+  title: "Nora",
+  description: "Nora",
 };
 
 export default function RootLayout({ children }) {
