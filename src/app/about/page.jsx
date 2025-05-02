@@ -1,13 +1,12 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import "./about.css";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CustomEase from "gsap/CustomEase";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import SplitType from "../lib/SplitType/index";
+// SplitTypeはクライアントサイドでのみ使用するためダイナミックインポートに変更
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { cvItems } from "./cvItems";
 
@@ -26,41 +25,59 @@ const AboutPage = () => {
       "M0,0 C0.354,0 0.464,0.133 0.498,0.502 0.532,0.872 0.651,1 1,1"
     );
 
-    const applySplitType = (element) => {
-      const splitTexts = element.querySelectorAll("h1, h2, h3");
-      splitTexts.forEach((text) => {
-        const split = new SplitType(text, {
-          types: "lines",
-          tagName: "span",
-        });
+    // SplitTypeをクライアントサイドでのみ動的にインポート
+    const loadSplitType = async () => {
+      try {
+        const SplitTypeModule = await import("../lib/SplitType/index");
+        const SplitType = SplitTypeModule.default;
+        
+        const applySplitType = (element) => {
+          if (!element) return;
+          const splitTexts = element.querySelectorAll("h1, h2, h3");
+          splitTexts.forEach((text) => {
+            const split = new SplitType(text, {
+              types: "lines",
+              tagName: "span",
+            });
 
-        split.lines.forEach((line) => {
-          const wrapper = document.createElement("div");
-          wrapper.className = "line-wrapper";
-          line.parentNode.insertBefore(wrapper, line);
-          wrapper.appendChild(line);
-        });
-      });
+            split.lines.forEach((line) => {
+              const wrapper = document.createElement("div");
+              wrapper.className = "line-wrapper";
+              line.parentNode.insertBefore(wrapper, line);
+              wrapper.appendChild(line);
+            });
+          });
+        };
+
+        if (aboutCopyRef.current) {
+          applySplitType(aboutCopyRef.current);
+          gsap.to(aboutCopyRef.current.querySelectorAll(".line-wrapper span"), {
+            y: 0,
+            stagger: 0.05,
+            delay: 1.5,
+            duration: 1.5,
+            ease: "power4.out",
+          });
+        }
+        
+        if (cvHeaderRef.current) {
+          applySplitType(cvHeaderRef.current);
+        }
+
+        if (cvListRef.current) {
+          applySplitType(cvListRef.current);
+        }
+      } catch (error) {
+        console.error("SplitType loading error:", error);
+      }
     };
-
-    if (aboutCopyRef.current) {
-      applySplitType(aboutCopyRef.current);
-      gsap.to(aboutCopyRef.current.querySelectorAll(".line-wrapper span"), {
-        y: 0,
-        stagger: 0.05,
-        delay: 1.5,
-        duration: 1.5,
-        ease: "power4.out",
-      });
+    
+    // クライアントサイドでのみSplitTypeを読み込む
+    if (typeof window !== 'undefined') {
+      loadSplitType();
     }
 
-    if (cvHeaderRef.current) {
-      applySplitType(cvHeaderRef.current);
-    }
-
-    if (cvListRef.current) {
-      applySplitType(cvListRef.current);
-    }
+    // cvHeaderRefとcvListRefの処理はloadSplitType内に移動済み
 
     if (cvWrapperRef.current) {
       const cvHeaderSpans =
@@ -151,7 +168,7 @@ const AboutPage = () => {
           <div className="about-intro">
             <div className="col about-portrait-img">
               <div className="about-portrait">
-                <Image src="/about/portrait-min.jpg" alt="Portrait" width={600} height={800} style={{width: '100%', height: 'auto'}} />
+                <img src="/about/portrait-min.jpg" alt="Portrait" />
               </div>
             </div>
             <div className="col about-copy-wrapper">
@@ -188,7 +205,7 @@ const AboutPage = () => {
         </div>
 
         <div className="about-hero-img" ref={heroImgRef}>
-          <Image src="/about/portrait-2-min.jpg" alt="Portrait" width={1200} height={800} style={{width: '100%', height: 'auto'}} />
+          <img src="/about/portrait-2-min.jpg" alt="Portrait" />
         </div>
 
         <div className="container">

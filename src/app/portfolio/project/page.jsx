@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import SplitType from "../../lib/SplitType/index";
+// SplitTypeはクライアントサイドでのみ使用するためダイナミックインポートに変更
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,27 +65,44 @@ const Page = () => {
         );
       });
 
-      copyH3Refs.current.forEach((h3) => {
-        const split = new SplitType(h3, { types: "lines" });
+      // SplitTypeをクライアントサイドでのみ動的にインポートして使用
+      const loadSplitType = async () => {
+        try {
+          const SplitTypeModule = await import("../../lib/SplitType/index");
+          const SplitType = SplitTypeModule.default;
+          
+          copyH3Refs.current.forEach((h3) => {
+            if (!h3) return;
+            
+            const split = new SplitType(h3, { types: "lines" });
 
-        split.lines.forEach((line) => {
-          const wrapper = document.createElement("div");
-          wrapper.className = "line";
-          line.parentNode.insertBefore(wrapper, line);
-          wrapper.appendChild(line);
-        });
+            split.lines.forEach((line) => {
+              const wrapper = document.createElement("div");
+              wrapper.className = "line";
+              line.parentNode.insertBefore(wrapper, line);
+              wrapper.appendChild(line);
+            });
 
-        gsap.from(h3.querySelectorAll(".line"), {
-          y: 36,
-          duration: 1,
-          stagger: 0.02,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: h3,
-            start: "top 80%",
-          },
-        });
-      });
+            gsap.from(h3.querySelectorAll(".line"), {
+              y: 36,
+              duration: 1,
+              stagger: 0.02,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: h3,
+                start: "top 80%",
+              },
+            });
+          });
+        } catch (error) {
+          console.error("SplitType loading error:", error);
+        }
+      };
+      
+      // クライアントサイドでのみSplitTypeを読み込む
+      if (typeof window !== 'undefined') {
+        loadSplitType();
+      }
 
       return () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

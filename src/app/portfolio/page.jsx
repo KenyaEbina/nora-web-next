@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import "./portfolio.css";
 
@@ -108,7 +107,7 @@ const Page = () => {
           {projects.slice(i, i + 3).map((project, index) => (
             <div className={`col ${project.size}`} key={i + index}>
               <Link href="/portfolio/project">
-                <Image src={`/portfolio/${project.img}`} alt={project.name} width={800} height={600} style={{width: '100%', height: 'auto'}} />
+                <img src={`/portfolio/${project.img}`} alt={project.name} />
                 <div className="project-title">
                   <h3>{project.name}</h3>
                 </div>
