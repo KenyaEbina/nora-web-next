@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import "./about.css";
 
 import gsap from "gsap";
@@ -150,7 +151,7 @@ const AboutPage = () => {
           <div className="about-intro">
             <div className="col about-portrait-img">
               <div className="about-portrait">
-                <img src="/about/portrait-min.jpg" alt="Portrait" />
+                <Image src="/about/portrait-min.jpg" alt="Portrait" width={600} height={800} style={{width: '100%', height: 'auto'}} />
               </div>
             </div>
             <div className="col about-copy-wrapper">
@@ -170,7 +171,7 @@ const AboutPage = () => {
                 <h3>
                   With a strong foundation in JavaScript, React, and modern web
                   technologies, Stefan excels at turning complex ideas into
-                  interactive realities. Whether it's a sleek portfolio site, a
+                  interactive realities. Whether it&apos;s a sleek portfolio site, a
                   dynamic web app, or a mesmerizing animation, he approaches
                   each project with creativity and technical precision.
                 </h3>
@@ -187,7 +188,7 @@ const AboutPage = () => {
         </div>
 
         <div className="about-hero-img" ref={heroImgRef}>
-          <img src="/about/portrait-2-min.jpg" alt="Portrait" />
+          <Image src="/about/portrait-2-min.jpg" alt="Portrait" width={1200} height={800} style={{width: '100%', height: 'auto'}} />
         </div>
 
         <div className="container">

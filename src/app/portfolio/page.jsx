@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import "./portfolio.css";
 
@@ -11,7 +12,7 @@ const Page = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef(null);
 
-  const projects = [
+  const projects = useMemo(() => [
     { name: "Urban Oasis", img: "project-1.jpg", size: "lg" },
     { name: "Smart Living", img: "project-2.jpg", size: "sm" },
     { name: "Eco Fashion", img: "project-3.jpg", size: "lg" },
@@ -21,7 +22,7 @@ const Page = () => {
     { name: "Green Pack", img: "project-7.jpg", size: "lg" },
     { name: "Drone Post", img: "project-8.jpg", size: "lg" },
     { name: "Secure Vote", img: "project-9.jpg", size: "sm" },
-  ];
+  ], []);
 
   useEffect(() => {
     const loadImages = async () => {
@@ -39,7 +40,7 @@ const Page = () => {
     };
 
     loadImages();
-  }, []);
+  }, [projects]);
 
   useGSAP(
     () => {
@@ -107,7 +108,7 @@ const Page = () => {
           {projects.slice(i, i + 3).map((project, index) => (
             <div className={`col ${project.size}`} key={i + index}>
               <Link href="/portfolio/project">
-                <img src={`/portfolio/${project.img}`} alt={project.name} />
+                <Image src={`/portfolio/${project.img}`} alt={project.name} width={800} height={600} style={{width: '100%', height: 'auto'}} />
                 <div className="project-title">
                   <h3>{project.name}</h3>
                 </div>

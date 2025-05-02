@@ -131,7 +131,7 @@ const Menu = () => {
         return !prevIsOpen;
       });
     }
-  }, [isAnimating, isOpen]);
+  }, [isAnimating]);
 
   const closeMenu = useCallback(() => {
     if (!isAnimating) {
