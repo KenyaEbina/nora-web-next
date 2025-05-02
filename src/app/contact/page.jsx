@@ -41,62 +41,62 @@ const Page = () => {
           <div className="col">
             <div className="where" ref={(el) => (sectionsRef.current[0] = el)}>
               <div className="title">
-                <p>Where</p>
+                <p>Location</p>
               </div>
               <div className="item">
-                <p>Spazio Alva</p>
+                <p>Address Line 1</p>
               </div>
               <div className="item">
-                <p>Vicolo Terrà, 5 VR/B</p>
+                <p>Address Line 2</p>
               </div>
               <div className="item">
-                <p>37129 . Verona . Italy</p>
+                <p>City, Country</p>
               </div>
             </div>
             <div className="vat" ref={(el) => (sectionsRef.current[1] = el)}>
               <div className="title">
-                <p>VAT</p>
+                <p>ID</p>
               </div>
               <div className="item">
-                <p>9724865620</p>
+                <p>123456789</p>
               </div>
             </div>
           </div>
 
           <div className="col">
             <div className="contact-header">
-              <h1 ref={headerRef}>Contact</h1>
+              <h1 ref={headerRef}>Get in Touch</h1>
             </div>
             <div
               className="socials"
               ref={(el) => (sectionsRef.current[2] = el)}
             >
               <div className="title">
-                <p>Socials</p>
+                <p>Connect</p>
               </div>
               <div className="item">
                 <p>
-                  <a href="#">Instagram</a>
+                  <a href="#">Social 1</a>
                 </p>
               </div>
               <div className="item">
                 <p>
-                  <a href="#">LinkedIn</a>
+                  <a href="#">Social 2</a>
                 </p>
               </div>
               <div className="item">
                 <p>
-                  <a href="#">Vimeo</a>
+                  <a href="#">Social 3</a>
                 </p>
               </div>
             </div>
             <div className="mail" ref={(el) => (sectionsRef.current[3] = el)}>
               <div className="title">
-                <p>Mail</p>
+                <p>Email</p>
               </div>
               <div className="item">
                 <p>
-                  <a href="#">contact@codegrid.com</a>
+                  <a href="#">contact@example.com</a>
                 </p>
               </div>
             </div>

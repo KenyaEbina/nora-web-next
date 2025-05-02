@@ -12,15 +12,15 @@ const Page = () => {
   const containerRef = useRef(null);
 
   const projects = useMemo(() => [
-    { name: "Urban Oasis", img: "project-1.jpg", size: "lg" },
-    { name: "Smart Living", img: "project-2.jpg", size: "sm" },
-    { name: "Eco Fashion", img: "project-3.jpg", size: "lg" },
-    { name: "VR Fitness", img: "project-4.jpg", size: "sm" },
-    { name: "Clean Energy", img: "project-5.jpg", size: "lg" },
-    { name: "AR Learning", img: "project-6.jpg", size: "lg" },
-    { name: "Green Pack", img: "project-7.jpg", size: "lg" },
-    { name: "Drone Post", img: "project-8.jpg", size: "lg" },
-    { name: "Secure Vote", img: "project-9.jpg", size: "sm" },
+    { name: "Project 1", img: "project-1.jpg", size: "lg" },
+    { name: "Project 2", img: "project-2.jpg", size: "sm" },
+    { name: "Project 3", img: "project-3.jpg", size: "lg" },
+    { name: "Project 4", img: "project-4.jpg", size: "sm" },
+    { name: "Project 5", img: "project-5.jpg", size: "lg" },
+    { name: "Project 6", img: "project-6.jpg", size: "lg" },
+    { name: "Project 7", img: "project-7.jpg", size: "lg" },
+    { name: "Project 8", img: "project-8.jpg", size: "lg" },
+    { name: "Project 9", img: "project-9.jpg", size: "sm" },
   ], []);
 
   useEffect(() => {
@@ -128,7 +128,7 @@ const Page = () => {
       >
         <div className="container">
           <div className="portfolio-header">
-            <h1>Portfolio</h1>
+            <h1>Projects</h1>
           </div>
           {isLoaded && renderProjectRows()}
         </div>

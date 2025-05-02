@@ -83,10 +83,10 @@ export default function Home() {
 
         <div className="hero-title">
           <div className="line">
-            <h1>An independent developer</h1>
+            <h1>Heading Line 1</h1>
           </div>
           <div className="line">
-            <h1>based in Toronto</h1>
+            <h1>Heading Line 2</h1>
           </div>
         </div>
       </div>

@@ -173,31 +173,20 @@ const AboutPage = () => {
             </div>
             <div className="col about-copy-wrapper">
               <div className="about-copy-title">
-                <h1>Bio</h1>
+                <h1>Heading</h1>
               </div>
 
               <div className="about-copy" ref={aboutCopyRef}>
                 <h3>
-                  Passionate about crafting immersive digital experiences,
-                  Stefan Markovic blends design and code to push the boundaries
-                  of what’s possible on the web. His approach focuses on
-                  creating seamless, responsive, and engaging interfaces that
-                  leave a lasting impact.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </h3>
                 <br />
                 <h3>
-                  With a strong foundation in JavaScript, React, and modern web
-                  technologies, Stefan excels at turning complex ideas into
-                  interactive realities. Whether it&apos;s a sleek portfolio site, a
-                  dynamic web app, or a mesmerizing animation, he approaches
-                  each project with creativity and technical precision.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </h3>
                 <br />
                 <h3>
-                  Driven by curiosity and innovation, Stefan constantly explores
-                  new tools, techniques, and frameworks. He’s not just a
-                  developer—he’s a problem solver, ready to bring your vision to
-                  life with a unique and modern touch.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
                 </h3>
               </div>
             </div>
@@ -211,7 +200,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="cv-wrapper" ref={cvWrapperRef}>
             <div className="cv-header" ref={cvHeaderRef}>
-              <h2>CV</h2>
+              <h2>Sample Heading</h2>
             </div>
 
             <div className="cv-list" ref={cvListRef}>
